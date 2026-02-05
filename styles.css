@@ -31,6 +31,7 @@ body {
   max-width: 980px;
   margin: 0 auto;
   padding: 24px 18px 40px;
+  width: 100%;
 }
 
 .topbar {
@@ -183,7 +184,7 @@ h1 {
 
 .weekday-row {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
   color: var(--muted);
   text-align: center;
@@ -194,8 +195,9 @@ h1 {
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
+  width: 100%;
 }
 
 .day {
@@ -316,7 +318,7 @@ h1 {
 
 @media (max-width: 430px) {
   .app {
-    padding: 18px 14px 28px;
+    padding: 16px 12px 24px;
   }
 
   h1 {
@@ -339,21 +341,26 @@ h1 {
   }
 
   .calendar-card {
-    padding: 14px;
+    padding: 10px;
   }
 
   .calendar-grid {
-    gap: 4px;
+    gap: 3px;
   }
 
   .day {
-    min-height: 48px;
-    padding: 4px;
-    border-radius: 14px;
+    min-height: 42px;
+    padding: 2px;
+    border-radius: 12px;
   }
 
   .day-number {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .weekday-row {
+    gap: 3px;
+    font-size: 0.75rem;
   }
 
   .stats-grid {

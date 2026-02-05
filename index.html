@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Karsten's Pill Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="pill-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img" focusable="false">
+            <defs>
+              <linearGradient id="cap" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffb199" />
+                <stop offset="1" stop-color="#ff8c8c" />
+              </linearGradient>
+              <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7fd3b8" />
+                <stop offset="1" stop-color="#4fa8a3" />
+              </linearGradient>
+            </defs>
+            <g transform="rotate(-25 32 32)">
+              <rect x="10" y="18" width="44" height="28" rx="14" fill="url(#cap)" />
+              <path d="M32 18h22c7.7 0 14 6.3 14 14s-6.3 14-14 14H32z" fill="url(#body)" />
+              <rect x="31" y="18" width="2" height="28" fill="#ffffff" opacity="0.7" />
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h1>Karsten's Pill Tracker</h1>
+          <p>Deine tägliche Erinnerung, schlicht und beruhigend.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="todayBtn" class="btn secondary">Heute</button>
+        <button id="undoBtn" class="btn ghost" disabled>Fehlklick rückgängig</button>
+      </div>
+    </header>
+
+    <section class="calendar-card">
+      <div class="calendar-header">
+        <button id="prevMonth" class="btn icon" aria-label="Vorheriger Monat">‹</button>
+        <div>
+          <div id="monthLabel" class="month-label">Monat</div>
+          <div class="sub">Tage anklicken, wenn du die Pille genommen hast.</div>
+        </div>
+        <button id="nextMonth" class="btn icon" aria-label="Nächster Monat">›</button>
+      </div>
+      <div class="weekday-row">
+        <div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div>
+      </div>
+      <div id="calendarGrid" class="calendar-grid"></div>
+    </section>
+
+    <section class="stats-card">
+      <div class="stats-header">Monatsübersicht</div>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-label">Eingenommen</div>
+          <div id="statTaken" class="stat-value">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Offen</div>
+          <div id="statOpen" class="stat-value">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Quote</div>
+          <div id="statRate" class="stat-value">0%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Aktueller Streak</div>
+          <div id="statStreak" class="stat-value">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Bester Streak</div>
+          <div id="statBestStreak" class="stat-value">0</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="status" id="statusText">Lokale Speicherung aktiv.</div>
+      <div class="hint">Keine Cloud, keine Anmeldung – alles bleibt auf deinem Gerät.</div>
+    </footer>
+  </div>
+
+  <div id="reminderOverlay" class="reminder hidden" role="dialog" aria-modal="true" aria-labelledby="reminderTitle">
+    <div class="reminder-card">
+      <h2 id="reminderTitle">Sanfte Erinnerung</h2>
+      <p>Du hast heute noch keine Pille markiert. Jetzt eintragen?</p>
+      <div class="reminder-actions">
+        <button id="reminderMark" class="btn">Als genommen markieren</button>
+        <button id="reminderLater" class="btn secondary">Später</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

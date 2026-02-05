@@ -321,3 +321,57 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 430px) {
+  .app {
+    padding: 18px 14px 28px;
+  }
+
+  h1 {
+    font-size: 1.35rem;
+  }
+
+  .brand p {
+    font-size: 0.85rem;
+  }
+
+  .pill-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+  }
+
+  .pill-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .calendar-card {
+    padding: 14px;
+  }
+
+  .calendar-grid {
+    gap: 6px;
+  }
+
+  .day {
+    min-height: 64px;
+    padding: 8px;
+  }
+
+  .day-number {
+    font-size: 0.95rem;
+  }
+
+  .pill-badge {
+    font-size: 0.65rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+  }
+}

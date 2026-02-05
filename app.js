@@ -61,6 +61,8 @@ function renderCalendar() {
 
   const firstWeekday = (start.getDay() + 6) % 7;
   const daysInMonth = end.getDate();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
   calendarGrid.innerHTML = "";
 
   for (let i = 0; i < firstWeekday; i++) {
@@ -71,14 +73,18 @@ function renderCalendar() {
 
   for (let day = 1; day <= daysInMonth; day++) {
     const date = new Date(year, month, day);
+    date.setHours(0, 0, 0, 0);
     const dayKey = toDateKey(date);
     const done = !!state.pills[dayKey];
+    const isPast = date.getTime() < today.getTime();
+    const isFuture = date.getTime() > today.getTime();
+    const missed = !done && isPast;
     const dayEl = document.createElement("button");
     dayEl.type = "button";
-    dayEl.className = `day${done ? " done" : ""}${isSameDay(date, new Date()) ? " today" : ""}`;
+    dayEl.className = `day${done ? " done" : ""}${missed ? " missed" : ""}${isSameDay(date, new Date()) ? " today" : ""}`;
     dayEl.innerHTML = `
       <div class="day-number">${day}</div>
-      <div class="pill-badge">${done ? "genommen" : "offen"}</div>
+      <div class="pill-badge">${done ? "genommen" : missed ? "fehlt" : "offen"}</div>
     `;
 
     dayEl.addEventListener("click", () => {

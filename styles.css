@@ -205,8 +205,8 @@ h1 {
   min-height: 78px;
   padding: 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   position: relative;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -232,29 +232,9 @@ h1 {
   border-color: #a4dcbf;
 }
 
-.day.done .pill-badge {
-  background: var(--done-strong);
-  color: white;
-}
-
 .day.missed {
   background: var(--missed);
   border-color: #f1b1b1;
-}
-
-.day.missed .pill-badge {
-  background: var(--missed-strong);
-  color: white;
-}
-
-.pill-badge {
-  align-self: flex-start;
-  background: var(--pill-soft);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 4px 8px;
-  font-size: 0.7rem;
-  font-weight: 600;
 }
 
 .day.today::after {
@@ -363,22 +343,17 @@ h1 {
   }
 
   .calendar-grid {
-    gap: 6px;
+    gap: 4px;
   }
 
   .day {
-    min-height: 56px;
-    padding: 6px;
+    min-height: 48px;
+    padding: 4px;
     border-radius: 14px;
   }
 
   .day-number {
-    font-size: 0.9rem;
-  }
-
-  .pill-badge {
-    font-size: 0.6rem;
-    padding: 3px 6px;
+    font-size: 0.85rem;
   }
 
   .stats-grid {

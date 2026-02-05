@@ -84,7 +84,6 @@ function renderCalendar() {
     dayEl.className = `day${done ? " done" : ""}${missed ? " missed" : ""}${isSameDay(date, new Date()) ? " today" : ""}`;
     dayEl.innerHTML = `
       <div class="day-number">${day}</div>
-      <div class="pill-badge">${done ? "genommen" : missed ? "fehlt" : "offen"}</div>
     `;
 
     dayEl.addEventListener("click", () => {

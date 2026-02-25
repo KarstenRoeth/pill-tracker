@@ -4,16 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Karsten's Pill Tracker</title>
-  <meta name="theme-color" content="#f6f7f4" />
+  <meta name="theme-color" content="#f0f4f2" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Pill Tracker" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="icon" href="assets/icon-192.png" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <div class="app">
+
     <header class="topbar">
       <div class="brand">
         <div class="pill-icon" aria-hidden="true">
@@ -36,31 +37,29 @@
           </svg>
         </div>
         <div>
-          <h1>Karsten's Pill Tracker</h1>
-          <p>Deine tägliche Erinnerung, schlicht und beruhigend.</p>
+          <h1>Pill Tracker</h1>
         </div>
       </div>
       <div class="actions">
-        <button id="todayBtn" class="btn secondary">Heute</button>
-        <button id="undoBtn" class="btn ghost" disabled>Fehlklick rückgängig</button>
+        <button id="todayBtn" class="btn secondary" title="Zur aktuellen Woche">Heute</button>
+        <button id="undoBtn" class="btn ghost" disabled title="Letzten Klick rückgängig machen">↩</button>
+        <button id="settingsBtn" class="btn ghost" title="Einstellungen">⚙</button>
       </div>
     </header>
 
-    <section class="calendar-card">
-      <div class="calendar-header">
-        <button id="prevMonth" class="btn icon" aria-label="Vorheriger Monat">‹</button>
-        <div>
-          <div id="monthLabel" class="month-label">Monat</div>
-          <div class="sub">Tage anklicken, wenn du die Pille genommen hast.</div>
-        </div>
-        <button id="nextMonth" class="btn icon" aria-label="Nächster Monat">›</button>
-      </div>
-      <div class="weekday-row">
-        <div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div>
-      </div>
-      <div id="calendarGrid" class="calendar-grid"></div>
+    <!-- Week Navigation -->
+    <div class="week-nav">
+      <button id="prevWeek" class="btn icon" aria-label="Vorherige Woche">‹</button>
+      <div id="weekLabel" class="week-label">KW –</div>
+      <button id="nextWeek" class="btn icon" aria-label="Nächste Woche">›</button>
+    </div>
+
+    <!-- Week Grid -->
+    <section class="week-card" id="weekGrid">
+      <!-- rendered by JS -->
     </section>
 
+    <!-- Stats -->
     <section class="stats-card">
       <div class="stats-header">Monatsübersicht</div>
       <div class="stats-grid">
@@ -77,7 +76,7 @@
           <div id="statRate" class="stat-value">0%</div>
         </div>
         <div class="stat">
-          <div class="stat-label">Aktueller Streak</div>
+          <div class="stat-label">Streak</div>
           <div id="statStreak" class="stat-value">0</div>
         </div>
         <div class="stat">
@@ -88,22 +87,26 @@
     </section>
 
     <footer class="footer">
-      <div class="status" id="statusText">Lokale Speicherung aktiv.</div>
-      <div class="hint">Keine Cloud, keine Anmeldung – alles bleibt auf deinem Gerät.</div>
+      <div id="statusText" class="status">Lokale Speicherung aktiv.</div>
+      <div class="hint">Keine Cloud · Keine Anmeldung</div>
     </footer>
   </div>
 
-  <div id="reminderOverlay" class="reminder hidden" role="dialog" aria-modal="true" aria-labelledby="reminderTitle">
-    <div class="reminder-card">
-      <h2 id="reminderTitle">Sanfte Erinnerung</h2>
-      <p>Du hast heute noch keine Pille markiert. Jetzt eintragen?</p>
-      <div class="reminder-actions">
-        <button id="reminderMark" class="btn">Als genommen markieren</button>
-        <button id="reminderLater" class="btn secondary">Später</button>
+  <!-- Settings Overlay -->
+  <div id="settingsOverlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="overlay-card">
+      <h2>Einstellungen</h2>
+      <p class="settings-desc">Wie viele Tabletten nimmst du täglich?</p>
+      <div class="dose-selector">
+        <button class="dose-btn" data-dose="1">1×</button>
+        <button class="dose-btn" data-dose="2">2×</button>
+        <button class="dose-btn" data-dose="3">3×</button>
+        <button class="dose-btn" data-dose="4">4×</button>
       </div>
+      <button id="closeSettings" class="btn" style="margin-top:20px;width:100%">Fertig</button>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

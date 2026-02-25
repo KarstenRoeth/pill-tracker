@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="icon" href="assets/icon-192.png" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <div class="app">
@@ -36,30 +36,23 @@
             </g>
           </svg>
         </div>
-        <div>
-          <h1>Pill Tracker</h1>
-        </div>
+        <h1>Pill Tracker</h1>
       </div>
       <div class="actions">
-        <button id="todayBtn" class="btn secondary" title="Zur aktuellen Woche">Heute</button>
-        <button id="undoBtn" class="btn ghost" disabled title="Letzten Klick rückgängig machen">↩</button>
+        <button id="todayBtn" class="btn secondary">Heute</button>
+        <button id="undoBtn" class="btn ghost" disabled title="Rückgängig">↩</button>
         <button id="settingsBtn" class="btn ghost" title="Einstellungen">⚙</button>
       </div>
     </header>
 
-    <!-- Week Navigation -->
     <div class="week-nav">
       <button id="prevWeek" class="btn icon" aria-label="Vorherige Woche">‹</button>
-      <div id="weekLabel" class="week-label">KW –</div>
+      <div id="weekLabel" class="week-label"></div>
       <button id="nextWeek" class="btn icon" aria-label="Nächste Woche">›</button>
     </div>
 
-    <!-- Week Grid -->
-    <section class="week-card" id="weekGrid">
-      <!-- rendered by JS -->
-    </section>
+    <section class="week-card" id="weekGrid"></section>
 
-    <!-- Stats -->
     <section class="stats-card">
       <div class="stats-header">Monatsübersicht</div>
       <div class="stats-grid">
@@ -96,17 +89,22 @@
   <div id="settingsOverlay" class="overlay hidden" role="dialog" aria-modal="true">
     <div class="overlay-card">
       <h2>Einstellungen</h2>
-      <p class="settings-desc">Wie viele Tabletten nimmst du täglich?</p>
-      <div class="dose-selector">
-        <button class="dose-btn" data-dose="1">1×</button>
-        <button class="dose-btn" data-dose="2">2×</button>
-        <button class="dose-btn" data-dose="3">3×</button>
-        <button class="dose-btn" data-dose="4">4×</button>
+      <p class="settings-desc">Wann nimmst du täglich Tabletten?<br>Tippe die Zeitpunkte an, um sie ein- oder auszuschalten.</p>
+      <div class="slot-selector">
+        <button class="slot-btn" data-slot="0">Morgens</button>
+        <button class="slot-btn" data-slot="1">Mittags</button>
+        <button class="slot-btn" data-slot="2">Abends</button>
+        <button class="slot-btn" data-slot="3">Nachts</button>
+      </div>
+      <div class="settings-legend">
+        <span class="legend-item"><span class="legend-dot done"></span> Eingenommen</span>
+        <span class="legend-item"><span class="legend-dot missed"></span> Nicht eingenommen</span>
+        <span class="legend-item"><span class="legend-dot inactive"></span> Kein Bedarf</span>
       </div>
       <button id="closeSettings" class="btn" style="margin-top:20px;width:100%">Fertig</button>
     </div>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

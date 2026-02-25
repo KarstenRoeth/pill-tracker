@@ -11,15 +11,14 @@
   --border: #e1e6e3;
   --shadow: 0 12px 30px rgba(27, 42, 42, 0.08);
 
-  /* Dose cell colors */
-  --cell-done:     #6ecf9e;   /* green  – taken */
-  --cell-done-b:   #4aad78;
-  --cell-missed:   #f08080;   /* red    – required, not taken */
-  --cell-missed-b: #d05050;
-  --cell-future:   #e8ede9;   /* light  – required, future */
-  --cell-future-b: #c8d4cc;
-  --cell-inactive: #d8ddd9;   /* grey   – not required */
-  --cell-inactive-b: #c0c8c4;
+  --cell-done:      #6ecf9e;
+  --cell-done-b:    #4aad78;
+  --cell-missed:    #f08080;
+  --cell-missed-b:  #d05050;
+  --cell-future:    #e8ede9;
+  --cell-future-b:  #c8d4cc;
+  --cell-inactive:  #d8ddd9;
+  --cell-inactive-b:#c0c8c4;
 }
 
 * { box-sizing: border-box; }
@@ -54,24 +53,21 @@ body {
 }
 
 .pill-icon {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   background: var(--card);
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: var(--shadow);
   display: grid;
   place-items: center;
   flex-shrink: 0;
 }
 
-.pill-icon svg {
-  width: 38px;
-  height: 38px;
-}
+.pill-icon svg { width: 34px; height: 34px; }
 
 h1 {
   margin: 0;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   letter-spacing: -0.02em;
 }
 
@@ -90,12 +86,11 @@ h1 {
   color: white;
   font-size: 0.9rem;
   cursor: pointer;
-  box-shadow: 0 6px 14px rgba(79, 168, 163, 0.22);
+  box-shadow: 0 6px 14px rgba(79,168,163,0.22);
   transition: opacity 0.15s, transform 0.1s;
   font-family: inherit;
 }
-
-.btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn:hover  { opacity: 0.88; transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
 
 .btn.secondary {
@@ -109,7 +104,7 @@ h1 {
   border: 1px solid var(--border);
   color: var(--muted);
   box-shadow: none;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   padding: 8px 13px;
 }
 
@@ -123,12 +118,12 @@ h1 {
 }
 
 .btn:disabled {
-  opacity: 0.38;
+  opacity: 0.35;
   cursor: not-allowed;
   transform: none;
 }
 
-/* ── Week navigation ────────────────────────────────────────────────── */
+/* ── Week nav ───────────────────────────────────────────────────────── */
 .week-nav {
   display: flex;
   align-items: center;
@@ -138,11 +133,11 @@ h1 {
 }
 
 .week-label {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text);
   text-align: center;
   flex: 1;
+  color: var(--text);
 }
 
 /* ── Week card ──────────────────────────────────────────────────────── */
@@ -161,19 +156,19 @@ h1 {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 4px 0;
+  padding: 3px 0;
 }
 
 .day-row.today {
   background: rgba(79, 168, 163, 0.07);
   border-radius: 14px;
-  padding: 4px 8px;
+  padding: 3px 8px;
   margin: 0 -8px;
 }
 
 .day-label {
-  width: 32px;
-  font-size: 0.9rem;
+  width: 30px;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--muted);
   flex-shrink: 0;
@@ -181,59 +176,36 @@ h1 {
   letter-spacing: 0.02em;
 }
 
-.day-label.today-label {
-  color: var(--accent-strong);
-}
+.day-label.today-label { color: var(--accent-strong); }
 
 /* ── Dose cells ─────────────────────────────────────────────────────── */
 .dose-cells {
   display: flex;
-  gap: 8px;
+  gap: 7px;
   flex: 1;
 }
 
 .dose-cell {
   flex: 1;
-  height: 46px;
-  border-radius: 12px;
+  height: 44px;
+  border-radius: 11px;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
   appearance: none;
   -webkit-appearance: none;
 }
 
 .dose-cell:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.13);
 }
+.dose-cell:active:not(:disabled) { transform: translateY(0); }
 
-.dose-cell:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.dose-cell.done {
-  background: var(--cell-done);
-  border-color: var(--cell-done-b);
-}
-
-.dose-cell.missed {
-  background: var(--cell-missed);
-  border-color: var(--cell-missed-b);
-}
-
-.dose-cell.future {
-  background: var(--cell-future);
-  border-color: var(--cell-future-b);
-  cursor: pointer;
-}
-
-.dose-cell.inactive {
-  background: var(--cell-inactive);
-  border-color: var(--cell-inactive-b);
-  cursor: default;
-  opacity: 0.5;
-}
+.dose-cell.done     { background: var(--cell-done);    border-color: var(--cell-done-b); }
+.dose-cell.missed   { background: var(--cell-missed);  border-color: var(--cell-missed-b); }
+.dose-cell.future   { background: var(--cell-future);  border-color: var(--cell-future-b); }
+.dose-cell.inactive { background: var(--cell-inactive); border-color: var(--cell-inactive-b); opacity: 0.45; cursor: default; }
 
 /* ── Stats ──────────────────────────────────────────────────────────── */
 .stats-card {
@@ -245,13 +217,12 @@ h1 {
 }
 
 .stats-header {
-  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 10px;
   color: var(--muted);
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
 }
 
 .stats-grid {
@@ -270,7 +241,7 @@ h1 {
 
 .stat-label {
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   line-height: 1.2;
 }
 
@@ -278,7 +249,6 @@ h1 {
   font-size: 1.3rem;
   font-weight: 700;
   margin-top: 4px;
-  color: var(--text);
 }
 
 /* ── Footer ─────────────────────────────────────────────────────────── */
@@ -303,101 +273,116 @@ h1 {
   backdrop-filter: blur(3px);
   z-index: 50;
 }
-
-.overlay.hidden {
-  display: none;
-}
+.overlay.hidden { display: none; }
 
 .overlay-card {
   background: var(--card);
   padding: 28px 24px;
   border-radius: 24px;
   box-shadow: var(--shadow);
-  max-width: 320px;
-  width: 90%;
+  max-width: 340px;
+  width: 92%;
   text-align: center;
 }
 
-.overlay-card h2 {
-  margin-top: 0;
-  font-size: 1.3rem;
-}
+.overlay-card h2 { margin-top: 0; font-size: 1.25rem; }
 
 .settings-desc {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+/* ── Slot selector (toggle buttons) ────────────────────────────────── */
+.slot-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   margin-bottom: 18px;
 }
 
-.dose-selector {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.dose-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+.slot-btn {
+  padding: 14px 10px;
+  border-radius: 14px;
   border: 2px solid var(--border);
-  background: #f5f8f6;
-  font-size: 1.1rem;
-  font-weight: 700;
+  background: var(--cell-inactive);
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  color: var(--text);
+  color: var(--muted);
   font-family: inherit;
-  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+  position: relative;
 }
 
-.dose-btn:hover {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
+.slot-btn::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cell-inactive-b);
+  margin: 6px auto 0;
+  transition: background 0.15s;
+}
+
+.slot-btn.active {
+  background: var(--cell-done);
+  border-color: var(--cell-done-b);
+  color: #1b4a30;
+}
+
+.slot-btn.active::after {
+  background: var(--cell-done-b);
+}
+
+.slot-btn:hover {
   transform: translateY(-2px);
 }
 
-.dose-btn.active {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent-strong);
+/* ── Settings legend ────────────────────────────────────────────────── */
+.settings-legend {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 4px;
 }
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.legend-dot.done     { background: var(--cell-done); }
+.legend-dot.missed   { background: var(--cell-missed); }
+.legend-dot.inactive { background: var(--cell-inactive); }
 
 /* ── Responsive ─────────────────────────────────────────────────────── */
 @media (max-width: 400px) {
-  .app {
-    padding: 14px 10px 28px;
-  }
+  .app { padding: 14px 10px 28px; }
+  h1 { font-size: 1.15rem; }
 
-  h1 {
-    font-size: 1.2rem;
-  }
+  .week-card { padding: 10px; gap: 6px; }
 
-  .week-card {
-    padding: 10px 10px;
-    gap: 6px;
-  }
+  .dose-cell { height: 38px; border-radius: 9px; }
+  .dose-cells { gap: 5px; }
+  .day-label { width: 26px; font-size: 0.8rem; }
 
-  .dose-cell {
-    height: 40px;
-    border-radius: 10px;
-  }
-
-  .day-label {
-    width: 26px;
-    font-size: 0.82rem;
-  }
-
-  .dose-cells {
-    gap: 5px;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 340px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
